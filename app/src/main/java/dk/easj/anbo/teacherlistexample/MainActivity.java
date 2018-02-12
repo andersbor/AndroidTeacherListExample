@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
-
     public static final String TEACHER = "teacher";
     private ArrayAdapter<Teacher> adapter;
     private final Teacher[] allTeachers = Teachers.getAllTeachers();
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         // Want to update the Adapters data when coming back from the child activity
-        ListView teacherListView = (ListView) findViewById(R.id.teacherListView);
+        ListView teacherListView = findViewById(R.id.teacherListView);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, allTeachers);
         teacherListView.setAdapter(adapter);
         teacherListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

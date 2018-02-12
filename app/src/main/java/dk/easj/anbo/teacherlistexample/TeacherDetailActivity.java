@@ -18,20 +18,28 @@ public class TeacherDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teacher_detail);
 
         Intent intent = getIntent();
-        Teacher teacher = (Teacher)intent.getSerializableExtra(MainActivity.TEACHER);
+        Teacher teacher = (Teacher) intent.getSerializableExtra(MainActivity.TEACHER);
         teacherId = teacher.getId();
 
-        TextView textView = (TextView)findViewById(R.id.teacher_detail_id_textview);
+        TextView textView = findViewById(R.id.teacherDetailIdTextView);
         textView.setText("Id: " + teacher.getId());
 
-        nameView = (EditText) findViewById(R.id.teacher_detail_name_textview);
-        nameView.setText(teacher.getName());
+        TextView emailView = findViewById(R.id.teacherDetailEmailTextView);
+        emailView.setText("Email " + teacher.getEmail());
 
+        TextView salaryView = findViewById(R.id.teacherDetailSalaryTextView);
+        salaryView.setText("Salary " + teacher.getSalary());
+
+        nameView = findViewById(R.id.teacherDetailNameEditTExt);
+        nameView.setText(teacher.getName());
     }
 
     public void teacherDetailUpdateButtonClicked(View view) {
         Teacher teacher = Teachers.getTeacherById(teacherId);
-        teacher.setName(nameView.getText().toString());
+        if (teacher != null) {
+            String newName = nameView.getText().toString();
+            teacher.setName(newName);
+        }
     }
 
     public void teacherDetailBackButtonClicked(View view) {
