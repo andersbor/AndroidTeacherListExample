@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class TeacherDetailActivity extends AppCompatActivity {
-
+    public static final String TEACHER = "teacher";
     private int teacherId;
     private EditText nameView;
 
@@ -18,7 +18,7 @@ public class TeacherDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_teacher_detail);
 
         Intent intent = getIntent();
-        Teacher teacher = (Teacher) intent.getSerializableExtra(MainActivity.TEACHER);
+        Teacher teacher = (Teacher) intent.getSerializableExtra(TEACHER);
         teacherId = teacher.getId();
 
         TextView textView = findViewById(R.id.teacherDetailIdTextView);

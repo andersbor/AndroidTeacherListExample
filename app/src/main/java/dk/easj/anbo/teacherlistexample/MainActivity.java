@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String TEACHER = "teacher";
     private ArrayAdapter<Teacher> adapter;
     private final Teacher[] allTeachers = Teachers.getAllTeachers();
 
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), TeacherDetailActivity.class);
                 int teacherId = (int) id + 1; // teacher Id's are 1-based, not 0-based
                 Teacher theTeacher = Teachers.getTeacherById(teacherId);
-                intent.putExtra(TEACHER, theTeacher);
+                intent.putExtra(TeacherDetailActivity.TEACHER, theTeacher);
                 startActivity(intent);
             }
         });
