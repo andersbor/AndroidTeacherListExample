@@ -3,6 +3,7 @@ package dk.easj.anbo.teacherlistexample;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getBaseContext(), TeacherDetailActivity.class);
+                Log.d("MINE", "Position: " + position + " id: " + id);
                 int teacherId = (int) id + 1; // teacher Id's are 1-based, not 0-based
-                Teacher theTeacher = Teachers.getTeacherById(teacherId);
+                Teacher theTeacher = (Teacher) parent.getItemAtPosition((int) id);
+                //Teacher theTeacher = Teachers.getTeacherById(teacherId);
                 intent.putExtra(TeacherDetailActivity.TEACHER, theTeacher);
                 startActivity(intent);
             }
