@@ -32,12 +32,10 @@ public class MainActivity extends AppCompatActivity {
         teacherListView.setAdapter(adapter);
         teacherListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Intent intent = new Intent(getBaseContext(), TeacherDetailActivity.class);
                 Log.d("MINE", "Position: " + position + " id: " + id);
-                int teacherId = (int) id + 1; // teacher Id's are 1-based, not 0-based
-                Teacher theTeacher = (Teacher) parent.getItemAtPosition((int) id);
-                //Teacher theTeacher = Teachers.getTeacherById(teacherId);
+                Teacher theTeacher = (Teacher) adapterView.getItemAtPosition(position);
                 intent.putExtra(TeacherDetailActivity.TEACHER, theTeacher);
                 startActivity(intent);
             }
